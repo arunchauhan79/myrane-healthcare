@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'SegoeUIFont', sans-serif;
+        /* Default font for all elements */
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('./assets/fonts/custom-font.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SegoeUIFont';
+    src: url('./assets/fonts/Segoe-UI-Emoji.ttf') format('truetype');
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.custom-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.custom-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.custom-font {
+    font-family: 'CustomFont', sans-serif;
+}
+
+.border-golden {
+    border-color: #FFD700;
+    /* Gold color */
+}
+
+.animate-shine {
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.5), rgba(255, 215, 0, 0) 70%);
+    border: 8px solid transparent;
+    border-radius: 8px;
+    animation: shine 2s infinite linear;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+/* Add this to your CSS file or a style tag */
+::-webkit-scrollbar {
+    width: 4px;
+    /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Color of the scrollbar thumb */
+    border-radius: 10px;
+    /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Color of the thumb when hovered */
+}
+
+/* Add this to your global CSS file */
+.perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  .transform-style-preserve {
+    transform-style: preserve-3d;
+  }
+  

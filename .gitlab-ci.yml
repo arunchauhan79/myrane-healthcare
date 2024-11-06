@@ -1,0 +1,36 @@
+stages:
+  - build
+  - deploy
+
+# Build stage for React app
+build_app:
+  image: node:14
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - build/
+
+# Deployment to S3 for prod environment (deploys from main branch)
+deploy_to_s3_prod:
+  image: amazon/aws-cli
+  stage: deploy
+  script:
+    - aws s3 sync build/ s3://www.sanatansansaar.com --delete
+  only:
+    - main  # Runs when code is pushed to the main branch
+  environment:
+    name: production
+
+# CloudFront cache invalidation after deployment for prod
+invalidate_cloudfront_prod:
+  image: amazon/aws-cli
+  stage: deploy
+  script:
+    - aws cloudfront create-invalidation --distribution-id ETCHR91CCGSGR --paths "/*"
+  only:
+    - main  # Runs only when code is pushed to the main branch
+  environment:
+    name: production
